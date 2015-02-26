@@ -11,7 +11,10 @@ class SocialShareHelper extends AppHelper {
 		'gplus' => 'https://plus.google.com/share?url={url}'
 	);
 
-	public function shareUrl($service, $url) {
+	public function shareUrl($service, $url = null) {
+
+		// If the URL hasn't been set, get the current full path.
+		$url = empty($url) ? Router::url(null, true) : $url;
 
 		$title = '';
 
@@ -33,7 +36,7 @@ class SocialShareHelper extends AppHelper {
 
 	}
 
-	public function link($service, $text, $url, $options = array()) {
+	public function link($service, $text, $url = null, $options = array()) {
 
 		return $this->Html->link(
 			$text,
