@@ -9,6 +9,7 @@ class SocialShareHelper extends AppHelper {
 	protected $_urls = array(
 		'facebook' => 'https://www.facebook.com/sharer/sharer.php?u={url}',
 		'gplus' => 'https://plus.google.com/share?url={url}',
+		'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url={url}&amp;title={title}',
 		'twitter' => 'http://twitter.com/home?status={title}+{url}'
 	);
 
