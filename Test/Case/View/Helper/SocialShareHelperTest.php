@@ -13,7 +13,7 @@ class SocialShareHelperTest extends CakeTestCase {
 		$this->SocialShare = new SocialShareHelper($View);
 	}
 
-	public function testShareUrl() {
+	public function testHref() {
 
 		$urls = array(
 			'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com',
@@ -29,7 +29,7 @@ class SocialShareHelperTest extends CakeTestCase {
 		foreach ($urls as $service => $expected) {
 			$this->assertEquals(
 				$expected,
-				$this->SocialShare->shareUrl($service, 'http://example.com', $options)
+				$this->SocialShare->href($service, 'http://example.com', $options)
 			);
 		}
 

@@ -13,7 +13,7 @@ class SocialShareHelper extends AppHelper {
 		'twitter' => 'http://twitter.com/home?status={title}+{url}'
 	);
 
-	public function shareUrl($service, $url = null, $options = array()) {
+	public function href($service, $url = null, $options = array()) {
 
 		// If the URL hasn't been set, get the current full path.
 		$url = empty($url) ? Router::url(null, true) : $url;
@@ -50,27 +50,11 @@ class SocialShareHelper extends AppHelper {
 
 		return $this->Html->link(
 			$text,
-			$this->shareUrl($service, $url, $options),
+			$this->href($service, $url, $options),
 			$attributes
 		);
 
 	}
 
-
-/**
- * Returns only array entries listed in a whitelist
- *
- * @param array $array original array to operate on
- * @param array $whitelist keys you want to keep
- * @return array
- */
-	protected function _arrayWhitelist($array, $whitelist) {
-
-		return array_intersect_key(
-			$array, 
-			array_flip($whitelist)
-		);
-
-	}
 
 }
