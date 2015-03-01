@@ -23,7 +23,7 @@ class SocialShareHelperTest extends CakeTestCase {
 		);
 
 		$options = array(
-			'title' => 'Foo bar'
+			'text' => 'Foo bar'
 		);
 
 		foreach ($urls as $service => $expected) {
@@ -56,7 +56,7 @@ class SocialShareHelperTest extends CakeTestCase {
 				'twitter',
 				'Share',
 				'http://example.com',
-				array('title' => 'Foo bar')
+				array('text' => 'Foo bar')
 			)
 		);
 

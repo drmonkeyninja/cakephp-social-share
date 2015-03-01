@@ -15,8 +15,8 @@ class SocialShareHelper extends AppHelper {
 	protected $_urls = array(
 		'facebook' => 'https://www.facebook.com/sharer/sharer.php?u={url}',
 		'gplus' => 'https://plus.google.com/share?url={url}',
-		'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url={url}&amp;title={title}',
-		'twitter' => 'http://twitter.com/home?status={title}+{url}'
+		'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url={url}&amp;title={text}',
+		'twitter' => 'http://twitter.com/home?status={text}+{url}'
 	);
 
 
@@ -25,7 +25,7 @@ class SocialShareHelper extends AppHelper {
  *
  * ### Options
  *
- * - `title` Text to be passed to service relating to the shared content(e.g. page title).
+ * - `text` Text to be passed to service relating to the shared content(e.g. page title).
  * 
  * For other options see HtmlHelper::link().
  *
@@ -39,17 +39,17 @@ class SocialShareHelper extends AppHelper {
 		// Get the URL, get the current full path if a URL hasn't been specified.
 		$url = Router::url($url, true);
 
-		$title = !empty($options['title']) ? $options['title'] : '';
+		$text = !empty($options['text']) ? $options['text'] : '';
 
 		if (!empty($this->_urls[$service])) {
 			return preg_replace(
 				array(
 					'/{url}/',
-					'/{title}/'
+					'/{text}/'
 				),
 				array(
 					urlencode($url),
-					urlencode($title)
+					urlencode($text)
 				),
 				$this->_urls[$service]
 			);
@@ -73,9 +73,9 @@ class SocialShareHelper extends AppHelper {
 
 		$options = array();
 
-		if (!empty($attributes['title'])) {
-			$options['title'] = $attributes['title'];
-			unset($attributes['title']);
+		if (!empty($attributes['text'])) {
+			$options['text'] = $attributes['text'];
+			unset($attributes['text']);
 		}
 
 		return $this->Html->link(
