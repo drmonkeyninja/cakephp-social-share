@@ -6,7 +6,6 @@ class SocialShareHelper extends AppHelper {
 
 	public $helpers = array('Html');
 
-
 /**
  * An array of services and their corresponding share/bookmarking URLs.
  *
@@ -23,6 +22,21 @@ class SocialShareHelper extends AppHelper {
 		'twitter' => 'http://twitter.com/home?status={text}+{url}'
 	);
 
+/**
+ * An array mapping services to their Font Awesome icons.
+ *
+ * @var array
+ */
+	protected $_fa = array(
+		'delicious' => 'fa-delicious',
+		'digg' => 'fa-digg',
+		'facebook' => 'fa-facebook',
+		'google' => 'fa-google',
+		'gplus' => 'fa-google-plus',
+		'linkedin' => 'fa-linkedin',
+		'reddit' => 'fa-reddit',
+		'twitter' => 'fa-twitter'
+	);
 
 /**
  * Creates a share URL.
@@ -63,7 +77,6 @@ class SocialShareHelper extends AppHelper {
 
 	}
 
-
 /**
  * Creates an HTML link to share a URL.
  *
@@ -86,6 +99,30 @@ class SocialShareHelper extends AppHelper {
 			$text,
 			$this->href($service, $url, $options),
 			$attributes
+		);
+
+	}
+
+/**
+ * Creates an HTML link to share a URL using a Font Awesome icon.
+ *
+ * ### Options
+ *
+ * See HtmlHelper::link().
+ *
+ * @param string $service Social Media service to create share link for.
+ * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+ * @param array $options Array of options.
+ * @return string An URL.
+ */
+	public function fa($service, $url = null, $options = array()) {
+
+		$options['escape'] = false;
+
+		return $this->Html->link(
+			'<i class="fa ' . $this->_fa[$service] . '"></i>',
+			$this->href($service, $url, $options),
+			$options
 		);
 
 	}

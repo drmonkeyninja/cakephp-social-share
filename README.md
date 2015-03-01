@@ -64,3 +64,16 @@ $options supports the same options as HtmlHelper::link() as well as a 'text' opt
 ### SocialShareHelper::href(string $service, mixed $url = null, array $options = array())
 
 Returns an URL for sharing to the supplied service.
+
+### SocialShareHelper::fa(string $service, mixed $url = null, array $options = array())
+
+Returns an HTML link just like SocialShare::link() except the link text will be a relevant Font Awesome icon for the service. For example:-
+
+    echo $this->SocialShare->fa(
+    	'facebook'
+    	'http://example.com'
+    );
+
+Will output:-
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com"><i class="fa fa-facebook"></i></a>

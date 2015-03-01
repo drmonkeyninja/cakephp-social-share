@@ -66,4 +66,18 @@ class SocialShareHelperTest extends CakeTestCase {
 
 	}
 
+	public function testFa() {
+
+		// Font Awesome test
+		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com"><i class="fa fa-facebook"></i></a>';
+		$this->assertEquals(
+			$expected,
+			$this->SocialShare->fa(
+				'facebook',
+				'http://example.com'
+			)
+		);
+
+	}
+
 }
