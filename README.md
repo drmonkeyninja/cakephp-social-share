@@ -5,7 +5,7 @@ This plugin provides a CakePHP View helper for creating links to share content o
 
 The aim of the plugin is to keep things simple. It doesn't come packaged with any JavaScript and I leave design decisions up to you. You can choose whether you want to use text, images, sprites or an icon font for your links.
 
-Social Share currently supports Facebook, Google+, LinkedIn and Twitter.
+Social Share currently supports Delicious, Digg, Facebook, Google Bookmarks, Google+, LinkedIn, Reddit and Twitter.
 
 Installation
 ------------
@@ -48,9 +48,13 @@ You can easily produce a list of links to share to different social networks:-
 
 Supported services:-
 
+* delicious
+* digg
 * facebook
+* google (Google Bookmarks)
 * gplus (Google+)
 * linkedin
+* reddit
 * twitter
 
 You can pass a URL or a routing array as the third parameter for the URL you want to share.

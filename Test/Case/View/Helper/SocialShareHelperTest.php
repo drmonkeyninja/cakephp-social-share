@@ -16,9 +16,13 @@ class SocialShareHelperTest extends CakeTestCase {
 	public function testHref() {
 
 		$urls = array(
+			'delicious' => 'http://delicious.com/post?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
+			'digg' => 'http://digg.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com',
+			'google' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'gplus' => 'https://plus.google.com/share?url=http%3A%2F%2Fexample.com',
 			'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
+			'reddit' => 'http://www.reddit.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'twitter' => 'http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com'
 		);
 

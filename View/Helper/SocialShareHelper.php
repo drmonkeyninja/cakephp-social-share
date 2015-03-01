@@ -13,9 +13,13 @@ class SocialShareHelper extends AppHelper {
  * @var array
  */
 	protected $_urls = array(
+		'delicious' => 'http://delicious.com/post?url={url}&amp;title={text}',
+		'digg' => 'http://digg.com/submit?url={url}&amp;title={text}',
 		'facebook' => 'https://www.facebook.com/sharer/sharer.php?u={url}',
+		'google' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk={url}&amp;title={text}',
 		'gplus' => 'https://plus.google.com/share?url={url}',
 		'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url={url}&amp;title={text}',
+		'reddit' => 'http://www.reddit.com/submit?url={url}&amp;title={text}',
 		'twitter' => 'http://twitter.com/home?status={text}+{url}'
 	);
 
