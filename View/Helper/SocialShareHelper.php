@@ -15,8 +15,8 @@ class SocialShareHelper extends AppHelper {
 
 	public function href($service, $url = null, $options = array()) {
 
-		// If the URL hasn't been set, get the current full path.
-		$url = empty($url) ? Router::url(null, true) : $url;
+		// Get the URL, get the current full path if a URL hasn't been specified.
+		$url = Router::url($url, true);
 
 		$title = !empty($options['title']) ? $options['title'] : '';
 
