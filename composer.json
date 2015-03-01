@@ -1,0 +1,20 @@
+{
+    "name": "drmonkeyninja/cakephp-social-share",
+    "description": "CakePHP helper for creating social share/bookmark links",
+    "type": "cakephp-plugin",
+    "keywords": ["cakephp", "helper"],
+    "homepage": "https://github.com/drmonkeyninja/cakephp-social-share",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andy Carter",
+            "role": "Author"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "extra": {
+        "installer-name": "SocialShare"
+    }
+}
