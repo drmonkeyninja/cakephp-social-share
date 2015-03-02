@@ -42,7 +42,7 @@ class SocialShareHelperTest extends CakeTestCase {
 	public function testLinks() {
 
 		// Facebook test
-		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com">Share</a>';
+		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank">Share</a>';
 		$this->assertEquals(
 			$expected,
 			$this->SocialShare->link(
@@ -53,7 +53,7 @@ class SocialShareHelperTest extends CakeTestCase {
 		);
 
 		// Twitter test
-		$expected = '<a href="http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com">Share</a>';
+		$expected = '<a href="http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com" target="_blank">Share</a>';
 		$this->assertEquals(
 			$expected,
 			$this->SocialShare->link(
@@ -64,12 +64,26 @@ class SocialShareHelperTest extends CakeTestCase {
 			)
 		);
 
+		// Facebook test
+		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com">Share</a>';
+		$this->assertEquals(
+			$expected,
+			$this->SocialShare->link(
+				'facebook',
+				'Share',
+				'http://example.com',
+				array(
+					'target' => null
+				)
+			)
+		);
+
 	}
 
 	public function testFa() {
 
 		// Font Awesome test
-		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com"><i class="fa fa-facebook"></i></a>';
+		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank"><i class="fa fa-facebook"></i></a>';
 		$this->assertEquals(
 			$expected,
 			$this->SocialShare->fa(

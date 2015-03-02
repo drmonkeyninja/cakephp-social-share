@@ -7,6 +7,15 @@ class SocialShareHelper extends AppHelper {
 	public $helpers = array('Html');
 
 /**
+ * Helper default settings.
+ *
+ * @var array
+ */
+	public $settings = array(
+		'target' => '_blank'
+	);
+
+/**
  * An array of services and their corresponding share/bookmarking URLs.
  *
  * @var array
@@ -88,6 +97,12 @@ class SocialShareHelper extends AppHelper {
  */
 	public function link($service, $text, $url = null, $attributes = array()) {
 
+		$defaults = array(
+			'target' => $this->settings['target']
+		);
+
+		$attributes = array_merge($defaults, $attributes);
+
 		$options = array();
 
 		if (!empty($attributes['text'])) {
@@ -117,8 +132,14 @@ class SocialShareHelper extends AppHelper {
  */
 	public function fa($service, $url = null, $options = array()) {
 
-		$options['escape'] = false;
+		$defaults = array(
+			'target' => $this->settings['target']
+		);
 
+		$options = array_merge($defaults, $options);
+
+		$options['escape'] = false;
+		
 		return $this->Html->link(
 			'<i class="fa ' . $this->_fa[$service] . '"></i>',
 			$this->href($service, $url, $options),
