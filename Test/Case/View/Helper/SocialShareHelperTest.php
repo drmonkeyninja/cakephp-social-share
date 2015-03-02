@@ -25,6 +25,7 @@ class SocialShareHelperTest extends CakeTestCase {
 			'gplus' => 'https://plus.google.com/share?url=http%3A%2F%2Fexample.com',
 			'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'newsvine' => 'http://www.newsvine.com/_tools/seed&save?u=http%3A%2F%2Fexample.com&amp;h=Foo+bar',
+			'pinterest' => 'http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fexample.com&amp;media=http%3A%2F%2Fexample.com%2Ftest.jpg&amp;description=Foo+bar',
 			'pocket' => 'https://getpocket.com/save?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'reddit' => 'http://www.reddit.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'slashdot' => 'http://slashdot.org/bookmark.pl?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
@@ -35,7 +36,8 @@ class SocialShareHelperTest extends CakeTestCase {
 		);
 
 		$options = array(
-			'text' => 'Foo bar'
+			'text' => 'Foo bar',
+			'image' => 'http://example.com/test.jpg'
 		);
 
 		foreach ($urls as $service => $expected) {
