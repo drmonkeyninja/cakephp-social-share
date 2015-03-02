@@ -7,6 +7,16 @@ class SocialShareHelper extends AppHelper {
 	public $helpers = array('Html');
 
 /**
+ * Helper default settings.
+ *
+ * @var array
+ */
+	public $settings = array(
+		'target' => '_blank',
+		'default_fa' => 'fa-share-alt'
+	);
+
+/**
  * An array of services and their corresponding share/bookmarking URLs.
  *
  * @var array
@@ -14,11 +24,20 @@ class SocialShareHelper extends AppHelper {
 	protected $_urls = array(
 		'delicious' => 'http://delicious.com/post?url={url}&amp;title={text}',
 		'digg' => 'http://digg.com/submit?url={url}&amp;title={text}',
+		'evernote' => 'http://www.evernote.com/clip.action?url={url}&amp;title={text}',
 		'facebook' => 'https://www.facebook.com/sharer/sharer.php?u={url}',
+		'friendfeed' => 'http://www.friendfeed.com/share?url={url}&amp;title={text}',
 		'google' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk={url}&amp;title={text}',
 		'gplus' => 'https://plus.google.com/share?url={url}',
 		'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url={url}&amp;title={text}',
+		'newsvine' => 'http://www.newsvine.com/_tools/seed&save?u={url}&amp;h={text}',
+		'pinterest' => 'http://www.pinterest.com/pin/create/button/?url={url}&amp;media={image}&amp;description={text}',
+		'pocket' => 'https://getpocket.com/save?url={url}&amp;title={text}',
 		'reddit' => 'http://www.reddit.com/submit?url={url}&amp;title={text}',
+		'slashdot' => 'http://slashdot.org/bookmark.pl?url={url}&amp;title={text}',
+		'stumbleupon' => 'http://www.stumbleupon.com/submit?url={url}&amp;title={text}',
+		'technorati' => 'http://technorati.com/faves?add={url}&amp;title={text}',
+		'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u={url}&amp;t={text}',
 		'twitter' => 'http://twitter.com/home?status={text}+{url}'
 	);
 
@@ -34,7 +53,10 @@ class SocialShareHelper extends AppHelper {
 		'google' => 'fa-google',
 		'gplus' => 'fa-google-plus',
 		'linkedin' => 'fa-linkedin',
+		'pinterest' => 'fa-pinterest',
 		'reddit' => 'fa-reddit',
+		'stumbleupon' => 'fa-stumbleupon',
+		'tumblr' => 'fa-tumblr',
 		'twitter' => 'fa-twitter'
 	);
 
@@ -44,6 +66,7 @@ class SocialShareHelper extends AppHelper {
  * ### Options
  *
  * - `text` Text to be passed to service relating to the shared content(e.g. page title).
+ * - `image` URL of image for sharing (used by Pinterest).
  * 
  * For other options see HtmlHelper::link().
  *
@@ -58,16 +81,19 @@ class SocialShareHelper extends AppHelper {
 		$url = Router::url($url, true);
 
 		$text = !empty($options['text']) ? $options['text'] : '';
+		$image = !empty($options['image']) ? $options['image'] : '';
 
 		if (!empty($this->_urls[$service])) {
 			return preg_replace(
 				array(
 					'/{url}/',
-					'/{text}/'
+					'/{text}/',
+					'/{image}/'
 				),
 				array(
 					urlencode($url),
-					urlencode($text)
+					urlencode($text),
+					urlencode($image)
 				),
 				$this->_urls[$service]
 			);
@@ -87,6 +113,12 @@ class SocialShareHelper extends AppHelper {
  * @return string An `<a />` element.
  */
 	public function link($service, $text, $url = null, $attributes = array()) {
+
+		$defaults = array(
+			'target' => $this->settings['target']
+		);
+
+		$attributes = array_merge($defaults, $attributes);
 
 		$options = array();
 
@@ -117,10 +149,18 @@ class SocialShareHelper extends AppHelper {
  */
 	public function fa($service, $url = null, $options = array()) {
 
+		$defaults = array(
+			'target' => $this->settings['target']
+		);
+
+		$options = array_merge($defaults, $options);
+
 		$options['escape'] = false;
 
+		$class = !empty($this->_fa[$service]) ? $this->_fa[$service] : $this->settings['default_fa'];
+		
 		return $this->Html->link(
-			'<i class="fa ' . $this->_fa[$service] . '"></i>',
+			'<i class="fa ' . $class . '"></i>',
 			$this->href($service, $url, $options),
 			$options
 		);
