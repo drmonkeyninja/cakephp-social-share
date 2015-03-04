@@ -67,7 +67,7 @@ class SocialShareHelper extends AppHelper {
  *
  * - `text` Text to be passed to service relating to the shared content(e.g. page title).
  * - `image` URL of image for sharing (used by Pinterest).
- * 
+ *
  * For other options see HtmlHelper::link().
  *
  * @param string $service Social Media service to create share link for.
@@ -140,6 +140,8 @@ class SocialShareHelper extends AppHelper {
  *
  * ### Options
  *
+ * - `icon_class` Class name of icon for overriding defaults.
+ *
  * See HtmlHelper::link().
  *
  * @param string $service Social Media service to create share link for.
@@ -157,10 +159,15 @@ class SocialShareHelper extends AppHelper {
 
 		$options['escape'] = false;
 
-		$class = !empty($this->_fa[$service]) ? $this->_fa[$service] : $this->settings['default_fa'];
-		
+		$class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->settings['default_fa']);
+
+		if (!empty($options['icon_class'])) {
+			$class = $options['icon_class'];
+		}
+		unset($options['icon_class']);
+
 		return $this->Html->link(
-			'<i class="fa ' . $class . '"></i>',
+			'<i class="' . $class . '"></i>',
 			$this->href($service, $url, $options),
 			$options
 		);
