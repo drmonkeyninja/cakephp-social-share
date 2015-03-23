@@ -24,6 +24,7 @@ class SocialShareHelper extends AppHelper {
 	protected $_urls = array(
 		'delicious' => 'http://delicious.com/post?url={url}&amp;title={text}',
 		'digg' => 'http://digg.com/submit?url={url}&amp;title={text}',
+		'email' => 'mailto:?subject={text}&amp;body={url}',
 		'evernote' => 'http://www.evernote.com/clip.action?url={url}&amp;title={text}',
 		'facebook' => 'https://www.facebook.com/sharer/sharer.php?u={url}',
 		'friendfeed' => 'http://www.friendfeed.com/share?url={url}&amp;title={text}',
@@ -49,6 +50,7 @@ class SocialShareHelper extends AppHelper {
 	protected $_fa = array(
 		'delicious' => 'fa-delicious',
 		'digg' => 'fa-digg',
+		'email' => 'fa-envelope',
 		'facebook' => 'fa-facebook',
 		'google' => 'fa-google',
 		'gplus' => 'fa-google-plus',

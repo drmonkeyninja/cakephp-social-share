@@ -5,7 +5,7 @@ This plugin provides a CakePHP View helper for creating links to share content o
 
 The aim of the plugin is to keep things simple. It doesn't come packaged with any JavaScript and I leave design decisions up to you. You can choose whether you want to use text, images, sprites or an icon font for your links.
 
-Social Share currently supports Delicious, Digg, Evernote, Facebook, Friend Feed, Google Bookmarks, Google+, LinkedIn, Newsvine, Pinterest, Pocket, Reddit Slashdot, StumbleUpon, Technorati, Tumblr and Twitter.
+Social Share currently supports Delicious, Digg, Evernote, Facebook, Friend Feed, Google Bookmarks, Google+, LinkedIn, Newsvine, Pinterest, Pocket, Reddit Slashdot, simple email, StumbleUpon, Technorati, Tumblr and Twitter.
 
 Installation
 ------------
@@ -50,6 +50,7 @@ Supported services:-
 
 * delicious
 * digg
+* email
 * evernote
 * facebook
 * friendfeed
