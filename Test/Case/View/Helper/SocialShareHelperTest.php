@@ -18,7 +18,7 @@ class SocialShareHelperTest extends CakeTestCase {
 		$urls = array(
 			'delicious' => 'http://delicious.com/post?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'digg' => 'http://digg.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-			'email' => 'mailto:?subject=Foo+bar&amp;body=http%3A%2F%2Fexample.com',
+			'email' => 'mailto:?subject=Foo+bar&body=http%3A%2F%2Fexample.com',
 			'evernote' => 'http://www.evernote.com/clip.action?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com',
 			'friendfeed' => 'http://www.friendfeed.com/share?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',

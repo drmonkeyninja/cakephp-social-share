@@ -24,7 +24,7 @@ class SocialShareHelper extends AppHelper {
 	protected $_urls = array(
 		'delicious' => 'http://delicious.com/post?url={url}&amp;title={text}',
 		'digg' => 'http://digg.com/submit?url={url}&amp;title={text}',
-		'email' => 'mailto:?subject={text}&amp;body={url}',
+		'email' => 'mailto:?subject={text}&body={url}',
 		'evernote' => 'http://www.evernote.com/clip.action?url={url}&amp;title={text}',
 		'facebook' => 'https://www.facebook.com/sharer/sharer.php?u={url}',
 		'friendfeed' => 'http://www.friendfeed.com/share?url={url}&amp;title={text}',
