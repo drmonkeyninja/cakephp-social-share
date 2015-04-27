@@ -32,7 +32,7 @@ Usage
 SocialShareHelper::link(string $service, string $title, mixed $url = null, array $options = array())
 ```
 
-Returns an HTML link to share the current page for the supplied service. For example to create a link for Facebook:-
+Returns an HTML link to share the current page for the supplied service. For example to create a link for Facebook:
 ```php
 echo $this->SocialShare->link(
 	'facebook',
@@ -40,7 +40,7 @@ echo $this->SocialShare->link(
 );
 ```
 
-You can easily produce a list of links to share to different social networks:-
+You can easily produce a list of links to share to different social networks:
 ```php
 $services = array(
 	'facebook' => __('Share on Facebook'),
@@ -59,7 +59,7 @@ foreach ($services as $service => $linkText) {
 echo '</ul>';
 ```
 
-Supported services:-
+Supported services:
 
 * delicious
 * digg
