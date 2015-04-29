@@ -39,7 +39,8 @@ class SocialShareHelper extends AppHelper {
 		'stumbleupon' => 'http://www.stumbleupon.com/submit?url={url}&amp;title={text}',
 		'technorati' => 'http://technorati.com/faves?add={url}&amp;title={text}',
 		'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u={url}&amp;t={text}',
-		'twitter' => 'http://twitter.com/home?status={text}+{url}'
+		'twitter' => 'http://twitter.com/home?status={text}+{url}',
+		'whatsapp' => 'whatsapp://send?text={text}%20{url}'
 	);
 
 /**
@@ -59,7 +60,8 @@ class SocialShareHelper extends AppHelper {
 		'reddit' => 'fa-reddit',
 		'stumbleupon' => 'fa-stumbleupon',
 		'tumblr' => 'fa-tumblr',
-		'twitter' => 'fa-twitter'
+		'twitter' => 'fa-twitter',
+		'whatsapp' => 'fa-whatsapp'
 	);
 
 /**

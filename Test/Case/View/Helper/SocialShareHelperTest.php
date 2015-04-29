@@ -33,7 +33,8 @@ class SocialShareHelperTest extends CakeTestCase {
 			'stumbleupon' => 'http://www.stumbleupon.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'technorati' => 'http://technorati.com/faves?add=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Fexample.com&amp;t=Foo+bar',
-			'twitter' => 'http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com'
+			'twitter' => 'http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com',
+			'whatsapp' => 'whatsapp://send?text=Foo+bar%20http%3A%2F%2Fexample.com'
 		);
 
 		$options = array(
