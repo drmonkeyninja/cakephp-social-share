@@ -80,7 +80,6 @@ class SocialShareHelper extends AppHelper {
  * @return string An URL.
  */
 	public function href($service, $url = null, $options = array()) {
-
 		// Get the URL, get the current full path if a URL hasn't been specified.
 		$url = Router::url($url, true);
 
@@ -104,7 +103,6 @@ class SocialShareHelper extends AppHelper {
 		}
 
 		return;
-
 	}
 
 /**
@@ -117,7 +115,6 @@ class SocialShareHelper extends AppHelper {
  * @return string An `<a />` element.
  */
 	public function link($service, $text, $url = null, $attributes = array()) {
-
 		$defaults = array(
 			'target' => $this->settings['target']
 		);
@@ -136,7 +133,6 @@ class SocialShareHelper extends AppHelper {
 			$this->href($service, $url, $options),
 			$attributes
 		);
-
 	}
 
 /**
@@ -154,7 +150,6 @@ class SocialShareHelper extends AppHelper {
  * @return string An URL.
  */
 	public function fa($service, $url = null, $options = array()) {
-
 		$defaults = array(
 			'target' => $this->settings['target']
 		);
@@ -175,7 +170,6 @@ class SocialShareHelper extends AppHelper {
 			$this->href($service, $url, $options),
 			$options
 		);
-
 	}
 
 

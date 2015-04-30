@@ -14,7 +14,6 @@ class SocialShareHelperTest extends CakeTestCase {
 	}
 
 	public function testHref() {
-
 		$urls = array(
 			'delicious' => 'http://delicious.com/post?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
 			'digg' => 'http://digg.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
@@ -48,11 +47,9 @@ class SocialShareHelperTest extends CakeTestCase {
 				$this->SocialShare->href($service, 'http://example.com', $options)
 			);
 		}
-
 	}
 
 	public function testLinks() {
-
 		// Facebook test
 		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank">Share</a>';
 		$this->assertEquals(
@@ -89,11 +86,9 @@ class SocialShareHelperTest extends CakeTestCase {
 				)
 			)
 		);
-
 	}
 
 	public function testFa() {
-
 		// Font Awesome test
 		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank"><i class="fa fa-facebook"></i></a>';
 		$this->assertEquals(
@@ -116,7 +111,6 @@ class SocialShareHelperTest extends CakeTestCase {
 				)
 			)
 		);
-
 	}
 
 }
