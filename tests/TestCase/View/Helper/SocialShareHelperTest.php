@@ -1,9 +1,10 @@
 <?php
 
-namespace SocialShare\Test\Case\View\Helper;
+namespace SocialShare\TestCase\View\Helper;
 
 use Cake\TestSuite\TestCase;
 use Cake\Controller\Controller;
+use Cake\Network\Request;
 use Cake\View\View;
 use SocialShare\View\Helper\SocialShareHelper;
 
@@ -11,8 +12,8 @@ class SocialShareHelperTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$Controller = new Controller();
-		$View = new View($Controller);
+		//$Controller = new Controller();
+		$View = new View(new Request());
 		$this->SocialShare = new SocialShareHelper($View);
 	}
 

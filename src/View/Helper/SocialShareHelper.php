@@ -121,8 +121,7 @@ class SocialShareHelper extends Helper {
 		$defaults = array(
 			'target' => $this->_config['target']
 		);
-
-		$attributes = array_merge($defaults, $attributes);
+		$attributes += $defaults;
 
 		$options = array();
 
@@ -156,8 +155,7 @@ class SocialShareHelper extends Helper {
 		$defaults = array(
 			'target' => $this->_config['target']
 		);
-
-		$options = array_merge($defaults, $options);
+		$options += $defaults;
 
 		$options['escape'] = false;
 
