@@ -1,10 +1,13 @@
 <?php
 
-App::uses('Controller', 'Controller');
-App::uses('View', 'View');
-App::uses('SocialShareHelper', 'SocialShare.View/Helper');
+namespace SocialShare\Test\Case\View\Helper;
 
-class SocialShareHelperTest extends CakeTestCase {
+use Cake\TestSuite\TestCase;
+use Cake\Controller\Controller;
+use Cake\View\View;
+use SocialShare\View\Helper\SocialShareHelper;
+
+class SocialShareHelperTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();

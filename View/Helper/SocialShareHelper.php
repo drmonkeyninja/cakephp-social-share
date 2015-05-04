@@ -1,8 +1,11 @@
 <?php
 
-App::uses('AppHelper', 'View/Helper');
+namespace SocialShare\View\Helper;
 
-class SocialShareHelper extends AppHelper {
+use Cake\Routing\Router;
+use Cake\View\Helper;
+
+class SocialShareHelper extends Helper {
 
 	public $helpers = array('Html');
 
@@ -11,7 +14,7 @@ class SocialShareHelper extends AppHelper {
  *
  * @var array
  */
-	public $settings = array(
+	public $_defaultConfig = array(
 		'target' => '_blank',
 		'default_fa' => 'fa-share-alt'
 	);
@@ -77,7 +80,7 @@ class SocialShareHelper extends AppHelper {
  * @param string $service Social Media service to create share link for.
  * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
  * @param array $options Array of options.
- * @return string An URL.
+ * @return string URL.
  */
 	public function href($service, $url = null, $options = array()) {
 		// Get the URL, get the current full path if a URL hasn't been specified.
@@ -116,7 +119,7 @@ class SocialShareHelper extends AppHelper {
  */
 	public function link($service, $text, $url = null, $attributes = array()) {
 		$defaults = array(
-			'target' => $this->settings['target']
+			'target' => $this->_config['target']
 		);
 
 		$attributes = array_merge($defaults, $attributes);
@@ -147,18 +150,18 @@ class SocialShareHelper extends AppHelper {
  * @param string $service Social Media service to create share link for.
  * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
  * @param array $options Array of options.
- * @return string An URL.
+ * @return string URL.
  */
 	public function fa($service, $url = null, $options = array()) {
 		$defaults = array(
-			'target' => $this->settings['target']
+			'target' => $this->_config['target']
 		);
 
 		$options = array_merge($defaults, $options);
 
 		$options['escape'] = false;
 
-		$class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->settings['default_fa']);
+		$class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->_config['default_fa']);
 
 		if (!empty($options['icon_class'])) {
 			$class = $options['icon_class'];
