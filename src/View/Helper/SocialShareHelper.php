@@ -14,7 +14,7 @@ class SocialShareHelper extends Helper {
  *
  * @var array
  */
-	public $_defaultConfig = array(
+	protected $_defaultConfig = array(
 		'target' => '_blank',
 		'default_fa' => 'fa-share-alt'
 	);
@@ -80,7 +80,7 @@ class SocialShareHelper extends Helper {
  * @param string $service Social Media service to create share link for.
  * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
  * @param array $options Array of options.
- * @return string URL.
+ * @return string|null URL.
  */
 	public function href($service, $url = null, $options = array()) {
 		// Get the URL, get the current full path if a URL hasn't been specified.
@@ -104,8 +104,6 @@ class SocialShareHelper extends Helper {
 				$this->_urls[$service]
 			);
 		}
-
-		return;
 	}
 
 /**
@@ -172,6 +170,5 @@ class SocialShareHelper extends Helper {
 			$options
 		);
 	}
-
 
 }
