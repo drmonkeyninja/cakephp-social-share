@@ -173,10 +173,14 @@ class SocialShareHelper extends Helper {
 		}
 		unset($options['icon_class']);
 
+		$attributes = $options;
+		unset($attributes['text']);
+		unset($attributes['image']);
+
 		return $this->Html->link(
 			'<i class="' . $class . '"></i>',
 			$this->href($service, $url, $options),
-			$options
+			$attributes
 		);
 	}
 

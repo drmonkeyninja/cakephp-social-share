@@ -131,6 +131,19 @@ class SocialShareHelperTest extends TestCase {
 				)
 			)
 		);
+
+		// Custom Text test
+		$expected = '<a href="whatsapp://send?text=Demo+Text+test%20http%3A%2F%2Fexample.com" target="_blank"><i class="fa fa-whatsapp"></i></a>';
+		$this->assertEquals(
+			$expected,
+			$this->SocialShare->fa(
+				'whatsapp',
+				'http://example.com',
+				array(
+					'text' => 'Demo Text test'
+				)
+			)
+		);
 	}
 
 }
