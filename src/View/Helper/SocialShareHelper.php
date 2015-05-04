@@ -67,6 +67,15 @@ class SocialShareHelper extends Helper {
 		'whatsapp' => 'fa-whatsapp'
 	);
 
+	/**
+	 * Return the list of available services
+	 *
+	 * @return array
+	 */
+	public function services() {
+		return array_keys($this->_urls);
+	}
+
 /**
  * Creates a share URL.
  *
@@ -82,7 +91,7 @@ class SocialShareHelper extends Helper {
  * @param array $options Array of options.
  * @return string|null URL.
  */
-	public function href($service, $url = null, $options = array()) {
+	public function href($service, $url = null, array $options = array()) {
 		// Get the URL, get the current full path if a URL hasn't been specified.
 		$url = Router::url($url, true);
 
@@ -115,7 +124,7 @@ class SocialShareHelper extends Helper {
  * @param array $attributes Array of options and HTML attributes.
  * @return string An `<a />` element.
  */
-	public function link($service, $text, $url = null, $attributes = array()) {
+	public function link($service, $text, $url = null, array $attributes = array()) {
 		$defaults = array(
 			'target' => $this->_config['target']
 		);
@@ -149,7 +158,7 @@ class SocialShareHelper extends Helper {
  * @param array $options Array of options.
  * @return string URL.
  */
-	public function fa($service, $url = null, $options = array()) {
+	public function fa($service, $url = null, array $options = array()) {
 		$defaults = array(
 			'target' => $this->_config['target']
 		);
