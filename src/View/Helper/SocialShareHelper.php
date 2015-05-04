@@ -67,11 +67,11 @@ class SocialShareHelper extends Helper {
 		'whatsapp' => 'fa-whatsapp'
 	);
 
-	/**
-	 * Returns the list of available services
-	 *
-	 * @return array
-	 */
+/**
+ * Returns the list of available services
+ *
+ * @return array
+ */
 	public function services() {
 		return array_keys($this->_urls);
 	}
