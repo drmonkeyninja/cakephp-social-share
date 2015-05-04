@@ -104,7 +104,7 @@ class SocialShareHelperTest extends TestCase {
 			)
 		);
 	}
-	
+
 /**
  * @return void
  */
