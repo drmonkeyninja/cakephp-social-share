@@ -40,7 +40,6 @@ before_script:
   - phpenv rehash
   - set +H
   - cp phpunit.xml.dist phpunit.xml
-  - cp config/app.php config/app_local.php
 
 script:
   - sh -c "if [ '$COVERALLS' = '1' ]; then phpunit --coverage-clover build/logs/clover.xml; fi"
