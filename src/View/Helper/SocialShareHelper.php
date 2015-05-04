@@ -68,7 +68,7 @@ class SocialShareHelper extends Helper {
 	);
 
 	/**
-	 * Return the list of available services
+	 * Returns the list of available services
 	 *
 	 * @return array
 	 */

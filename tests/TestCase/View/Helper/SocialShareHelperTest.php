@@ -9,6 +9,9 @@ use SocialShare\View\Helper\SocialShareHelper;
 
 class SocialShareHelperTest extends TestCase {
 
+/**
+ * @return void
+ */
 	public function setUp() {
 		parent::setUp();
 
