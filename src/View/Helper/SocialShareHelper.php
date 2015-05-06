@@ -1,8 +1,11 @@
 <?php
 
-App::uses('AppHelper', 'View/Helper');
+namespace SocialShare\View\Helper;
 
-class SocialShareHelper extends AppHelper {
+use Cake\Routing\Router;
+use Cake\View\Helper;
+
+class SocialShareHelper extends Helper {
 
 	public $helpers = array('Html');
 
@@ -11,7 +14,7 @@ class SocialShareHelper extends AppHelper {
  *
  * @var array
  */
-	public $settings = array(
+	protected $_defaultConfig = array(
 		'target' => '_blank',
 		'default_fa' => 'fa-share-alt'
 	);
@@ -65,6 +68,15 @@ class SocialShareHelper extends AppHelper {
 	);
 
 /**
+ * Returns the list of available services
+ *
+ * @return array
+ */
+	public function services() {
+		return array_keys($this->_urls);
+	}
+
+/**
  * Creates a share URL.
  *
  * ### Options
@@ -77,9 +89,9 @@ class SocialShareHelper extends AppHelper {
  * @param string $service Social Media service to create share link for.
  * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
  * @param array $options Array of options.
- * @return string An URL.
+ * @return string|null URL.
  */
-	public function href($service, $url = null, $options = array()) {
+	public function href($service, $url = null, array $options = array()) {
 		// Get the URL, get the current full path if a URL hasn't been specified.
 		$url = Router::url($url, true);
 
@@ -101,8 +113,6 @@ class SocialShareHelper extends AppHelper {
 				$this->_urls[$service]
 			);
 		}
-
-		return;
 	}
 
 /**
@@ -114,12 +124,11 @@ class SocialShareHelper extends AppHelper {
  * @param array $attributes Array of options and HTML attributes.
  * @return string An `<a />` element.
  */
-	public function link($service, $text, $url = null, $attributes = array()) {
+	public function link($service, $text, $url = null, array $attributes = array()) {
 		$defaults = array(
-			'target' => $this->settings['target']
+			'target' => $this->_config['target']
 		);
-
-		$attributes = array_merge($defaults, $attributes);
+		$attributes += $defaults;
 
 		$options = array();
 
@@ -147,18 +156,17 @@ class SocialShareHelper extends AppHelper {
  * @param string $service Social Media service to create share link for.
  * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
  * @param array $options Array of options.
- * @return string An URL.
+ * @return string URL.
  */
-	public function fa($service, $url = null, $options = array()) {
+	public function fa($service, $url = null, array $options = array()) {
 		$defaults = array(
-			'target' => $this->settings['target']
+			'target' => $this->_config['target']
 		);
-
-		$options = array_merge($defaults, $options);
+		$options += $defaults;
 
 		$options['escape'] = false;
 
-		$class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->settings['default_fa']);
+		$class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->_config['default_fa']);
 
 		if (!empty($options['icon_class'])) {
 			$class = $options['icon_class'];
@@ -168,13 +176,12 @@ class SocialShareHelper extends AppHelper {
 		$attributes = $options;
 		unset($attributes['text']);
 		unset($attributes['image']);
-		
+
 		return $this->Html->link(
 			'<i class="' . $class . '"></i>',
 			$this->href($service, $url, $options),
 			$attributes
 		);
 	}
-
 
 }

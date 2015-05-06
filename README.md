@@ -1,22 +1,21 @@
-CakePHP Social Share
-====================
-
-This plugin provides a CakePHP 2.x View helper for creating links to share content on numerous social networks and bookmarking sites.
+# CakePHP Social Share
+[![License](https://poser.pugx.org/drmonkeyninja/cakephp-social-share/license.png)](https://packagist.org/packages/drmonkeyninja/cakephp-social-share)
+https://github.com/
+This plugin provides a CakePHP View helper for creating links to share content on numerous social networks and bookmarking sites.
 
 The aim of the plugin is to keep things simple. It doesn't come packaged with any JavaScript and I leave design decisions up to you. You can choose whether you want to use text, images, sprites or an icon font for your links.
 
 Social Share currently supports Delicious, Digg, Evernote, Facebook, Friend Feed, Google Bookmarks, Google+, LinkedIn, Newsvine, Pinterest, Pocket, Reddit Slashdot, simple email, StumbleUpon, Technorati, Tumblr, Twitter and WhatsApp.
 
-Installation
-------------
+**Note**: This branch is for CakePHP 3.x.
 
-Install using composer: `composer require drmonkeyninja/cakephp-social-share:~2.0`
+## Installation
 
-Alternatively, you can manually copy the plugin to your app/Plugin directory and rename the plugin's directory 'SocialShare'.
+Install using composer: `composer require drmonkeyninja/cakephp-social-share:3.0.*-dev`
 
 Then add the following line to your bootstrap.php to load the plugin.
 ```php
-CakePlugin::load('SocialShare');
+Plugin::load('SocialShare');
 ```
 
 Also don't forget to add the helper in your controller:
@@ -24,8 +23,7 @@ Also don't forget to add the helper in your controller:
 public $helpers = array('SocialShare.SocialShare');
 ```
 
-Usage
------
+## Usage
 
 ### SocialShareHelper::link()
 ```

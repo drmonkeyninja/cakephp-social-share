@@ -1,18 +1,35 @@
 <?php
 
-App::uses('Controller', 'Controller');
-App::uses('View', 'View');
-App::uses('SocialShareHelper', 'SocialShare.View/Helper');
+namespace SocialShare\TestCase\View\Helper;
 
-class SocialShareHelperTest extends CakeTestCase {
+use Cake\TestSuite\TestCase;
+use Cake\Network\Request;
+use Cake\View\View;
+use SocialShare\View\Helper\SocialShareHelper;
 
+class SocialShareHelperTest extends TestCase {
+
+/**
+ * @return void
+ */
 	public function setUp() {
 		parent::setUp();
-		$Controller = new Controller();
-		$View = new View($Controller);
+
+		$View = new View(new Request());
 		$this->SocialShare = new SocialShareHelper($View);
 	}
 
+/**
+ * @return void
+ */
+	public function testServices() {
+		$result = $this->SocialShare->services();
+		$this->assertNotEmpty($result);
+	}
+
+/**
+ * @return void
+ */
 	public function testHref() {
 		$urls = array(
 			'delicious' => 'http://delicious.com/post?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
@@ -49,6 +66,9 @@ class SocialShareHelperTest extends CakeTestCase {
 		}
 	}
 
+/**
+ * @return void
+ */
 	public function testLinks() {
 		// Facebook test
 		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank">Share</a>';
@@ -88,6 +108,9 @@ class SocialShareHelperTest extends CakeTestCase {
 		);
 	}
 
+/**
+ * @return void
+ */
 	public function testFa() {
 		// Font Awesome test
 		$expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank"><i class="fa fa-facebook"></i></a>';
