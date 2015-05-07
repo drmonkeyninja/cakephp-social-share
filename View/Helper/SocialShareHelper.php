@@ -65,6 +65,15 @@ class SocialShareHelper extends AppHelper {
 	);
 
 /**
+ * Returns the list of available services
+ *
+ * @return array
+ */
+	public function services() {
+		return array_keys($this->_urls);
+	}
+
+/**
  * Creates a share URL.
  *
  * ### Options
@@ -168,13 +177,12 @@ class SocialShareHelper extends AppHelper {
 		$attributes = $options;
 		unset($attributes['text']);
 		unset($attributes['image']);
-		
+
 		return $this->Html->link(
 			'<i class="' . $class . '"></i>',
 			$this->href($service, $url, $options),
 			$attributes
 		);
 	}
-
 
 }

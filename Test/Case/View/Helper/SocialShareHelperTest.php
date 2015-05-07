@@ -13,6 +13,14 @@ class SocialShareHelperTest extends CakeTestCase {
 		$this->SocialShare = new SocialShareHelper($View);
 	}
 
+/**
+ * @return void
+ */
+	public function testServices() {
+		$result = $this->SocialShare->services();
+		$this->assertNotEmpty($result);
+	}
+
 	public function testHref() {
 		$urls = array(
 			'delicious' => 'http://delicious.com/post?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
