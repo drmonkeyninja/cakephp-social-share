@@ -1,6 +1,6 @@
 # CakePHP Social Share
 [![License](https://poser.pugx.org/drmonkeyninja/cakephp-social-share/license.png)](https://packagist.org/packages/drmonkeyninja/cakephp-social-share)
-https://github.com/
+
 This plugin provides a CakePHP View helper for creating links to share content on numerous social networks and bookmarking sites.
 
 The aim of the plugin is to keep things simple. It doesn't come packaged with any JavaScript and I leave design decisions up to you. You can choose whether you want to use text, images, sprites or an icon font for your links.
