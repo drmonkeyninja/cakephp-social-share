@@ -20,14 +20,14 @@ Plugin::load('SocialShare');
 
 Also don't forget to add the helper in your controller:
 ```php
-public $helpers = array('SocialShare.SocialShare');
+public $helpers = ['SocialShare.SocialShare'];
 ```
 
 ## Usage
 
 ### SocialShareHelper::link()
 ```
-SocialShareHelper::link(string $service, string $title, mixed $url = null, array $options = array())
+SocialShareHelper::link(string $service, string $title, mixed $url = null, array $options = [])
 ```
 
 Returns an HTML link to share the current page for the supplied service. For example to create a link for Facebook:
@@ -40,12 +40,12 @@ echo $this->SocialShare->link(
 
 You can easily produce a list of links to share to different social networks:
 ```php
-$services = array(
+$services = [
 	'facebook' => __('Share on Facebook'),
 	'gplus' => __('Share on Google+'),
 	'linkedin' => __('Share on LinkedIn'),
 	'twitter' => __('Share on Twitter')
-);
+];
 
 echo '<ul>';
 foreach ($services as $service => $linkText) {
@@ -81,18 +81,19 @@ Supported services:
 
 You can pass a URL or a routing array as the third parameter for the URL you want to share.
 
-$options supports the same options as `HtmlHelper::link()` as well as a 'text' option for a page title you want to include when sharing the URL. For Pinterest there is an additional 'image' option for a URL to an image to share.
+`$options` supports the same options as `HtmlHelper::link()` as well as a 'text' option for a page title you want to include when sharing the URL.
+For Pinterest there is an additional 'image' option for a URL to an image to share.
 
 ### SocialShareHelper::href()
 ```
-SocialShareHelper::href(string $service, mixed $url = null, array $options = array())
+SocialShareHelper::href(string $service, mixed $url = null, array $options = [])
 ```
 
 Returns an URL for sharing to the supplied service.
 
 ### SocialShareHelper::fa()
 ```
-SocialShareHelper::fa(string $service, mixed $url = null, array $options = array())
+SocialShareHelper::fa(string $service, mixed $url = null, array $options = [])
 ```
 
 Returns an HTML link just like `SocialShare::link()` except the link text will be a relevant Font Awesome icon for the service.
