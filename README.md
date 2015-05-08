@@ -7,6 +7,8 @@ The aim of the plugin is to keep things simple. It doesn't come packaged with an
 
 Social Share currently supports Delicious, Digg, Evernote, Facebook, Friend Feed, Google Bookmarks, Google+, LinkedIn, Newsvine, Pinterest, Pocket, Reddit Slashdot, simple email, StumbleUpon, Technorati, Tumblr, Twitter and WhatsApp.
 
+**Note**: This branch is for CakePHP 2.x.
+
 Installation
 ------------
 
