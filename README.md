@@ -1,5 +1,5 @@
 # CakePHP Social Share
-[![License](https://poser.pugx.org/drmonkeyninja/cakephp-social-share/license.png)](https://packagist.org/packages/drmonkeyninja/cakephp-social-share)
+[![License](https://poser.pugx.org/drmonkeyninja/cakephp-social-share/license.png)](https://packagist.org/packages/drmonkeyninja/cakephp-social-share) [![Build Status](https://travis-ci.org/drmonkeyninja/cakephp-social-share.svg?branch=3.0.0.0)](https://travis-ci.org/drmonkeyninja/cakephp-social-share)
 
 This plugin provides a CakePHP View helper for creating links to share content on numerous social networks and bookmarking sites.
 
@@ -33,26 +33,26 @@ SocialShareHelper::link(string $service, string $title, mixed $url = null, array
 Returns an HTML link to share the current page for the supplied service. For example to create a link for Facebook:
 ```php
 echo $this->SocialShare->link(
-	'facebook',
-	__('Share on Facebook')
+    'facebook',
+    __('Share on Facebook')
 );
 ```
 
 You can easily produce a list of links to share to different social networks:
 ```php
 $services = [
-	'facebook' => __('Share on Facebook'),
-	'gplus' => __('Share on Google+'),
-	'linkedin' => __('Share on LinkedIn'),
-	'twitter' => __('Share on Twitter')
+    'facebook' => __('Share on Facebook'),
+    'gplus' => __('Share on Google+'),
+    'linkedin' => __('Share on LinkedIn'),
+    'twitter' => __('Share on Twitter')
 ];
 
 echo '<ul>';
 foreach ($services as $service => $linkText) {
-	echo '<li>' . $this->SocialShare->link(
-		$service,
-		$linkText
-	) . '</li>';
+    echo '<li>' . $this->SocialShare->link(
+        $service,
+        $linkText
+    ) . '</li>';
 }
 echo '</ul>';
 ```
@@ -100,13 +100,13 @@ Returns an HTML link just like `SocialShare::link()` except the link text will b
 For example:
 ```php
 echo $this->SocialShare->fa(
-	'facebook'
-	'http://example.com'
+    'facebook'
+    'http://example.com'
 );
 ```
 Will output:
 ```html
 <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com">
-	<i class="fa fa-facebook"></i>
+    <i class="fa fa-facebook"></i>
 </a>
 ```
