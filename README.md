@@ -11,7 +11,7 @@ Social Share currently supports Delicious, Digg, Evernote, Facebook, Friend Feed
 
 ## Installation
 
-Install using composer: `composer require drmonkeyninja/cakephp-social-share:3.0.*-dev`
+Install using composer: `composer require drmonkeyninja/cakephp-social-share:3.0.*`
 
 Then add the following line to your bootstrap.php to load the plugin.
 ```php
