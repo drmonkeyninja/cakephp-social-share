@@ -10,26 +10,23 @@
             "name": "Andy Carter",
             "role": "Author"
         },
-		{
-			"name": "Mark Scherer",
-			"role": "Contributor"
-		}
+        {
+            "name": "Mark Scherer",
+            "role": "Contributor"
+        }
     ],
     "require": {
-		"cakephp/cakephp": "~3.0"
+        "cakephp/cakephp": "~3.0"
     },
-	"autoload": {
-		"psr-4": {
-			"SocialShare\\": "src"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
-			"SocialShare\\Test\\": "tests"
-		}
-	},
-    "extra": {
-        "installer-name": "SocialShare"
+    "autoload": {
+        "psr-4": {
+            "SocialShare\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
+            "SocialShare\\Test\\": "tests"
+        }
     }
 }
