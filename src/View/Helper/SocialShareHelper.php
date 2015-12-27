@@ -171,11 +171,7 @@ class SocialShareHelper extends Helper
 
         $options['escape'] = false;
 
-        $class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->_config['default_fa']);
-
-        if (!empty($options['icon_class'])) {
-            $class = $options['icon_class'];
-        }
+        $icon = $this->icon($service, $options);
         unset($options['icon_class']);
 
         $attributes = $options;
@@ -183,9 +179,30 @@ class SocialShareHelper extends Helper
         unset($attributes['image']);
 
         return $this->Html->link(
-            '<i class="' . $class . '"></i>',
+            $icon,
             $this->href($service, $url, $options),
             $attributes
         );
     }
+
+    /**
+     * Creates an icon
+     *
+     * ### Options
+     *
+     * - `icon_class` Class name of icon for overriding defaults.
+     *
+     * @param string $service
+     * @param array $options
+     * @return string
+     */
+    public function icon($service, array $options = array()) {
+        $class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->_config['default_fa']);
+        if (!empty($options['icon_class'])) {
+            $class = $options['icon_class'];
+        }
+
+        return '<i class="' . $class . '"></i>';
+    }
+
 }
