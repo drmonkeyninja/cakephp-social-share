@@ -10,9 +10,9 @@ use SocialShare\View\Helper\SocialShareHelper;
 class SocialShareHelperTest extends TestCase
 {
 
-/**
- * @return void
- */
+    /**
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
@@ -21,18 +21,18 @@ class SocialShareHelperTest extends TestCase
         $this->SocialShare = new SocialShareHelper($View);
     }
 
-/**
- * @return void
- */
+    /**
+     * @return void
+     */
     public function testServices()
     {
         $result = $this->SocialShare->services();
         $this->assertNotEmpty($result);
     }
 
-/**
- * @return void
- */
+    /**
+     * @return void
+     */
     public function testHref()
     {
         $urls = array(
@@ -70,9 +70,22 @@ class SocialShareHelperTest extends TestCase
         }
     }
 
-/**
- * @return void
- */
+    /**
+     * @return void
+     */
+    public function testIcon() {
+        $icon = $this->SocialShare->icon('facebook');
+        $expected = '<i class="fa fa-facebook"></i>';
+        $this->assertSame($expected, $icon);
+
+        $expected = '<i class="fa fa-whatsapp-square"></i>';
+        $icon = $this->SocialShare->icon('whatsapp', ['icon_class' => 'fa fa-whatsapp-square']);
+        $this->assertSame($expected, $icon);
+    }
+
+    /**
+     * @return void
+     */
     public function testLinks()
     {
         // Facebook test
@@ -113,9 +126,9 @@ class SocialShareHelperTest extends TestCase
         );
     }
 
-/**
- * @return void
- */
+    /**
+     * @return void
+     */
     public function testFa()
     {
         // Font Awesome test
