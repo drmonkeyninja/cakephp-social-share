@@ -8,24 +8,24 @@ use Cake\View\Helper;
 class SocialShareHelper extends Helper
 {
 
-    public $helpers = array('Html');
+    public $helpers = ['Html'];
 
     /**
      * Helper default settings.
      *
      * @var array
      */
-    protected $_defaultConfig = array(
+    protected $_defaultConfig = [
         'target' => '_blank',
         'default_fa' => 'fa-share-alt'
-    );
+    ];
 
     /**
      * An array of services and their corresponding share/bookmarking URLs.
      *
      * @var array
      */
-    protected $_urls = array(
+    protected $_urls = [
         'delicious' => 'http://delicious.com/post?url={url}&amp;title={text}',
         'digg' => 'http://digg.com/submit?url={url}&amp;title={text}',
         'email' => 'mailto:?subject={text}&body={url}',
@@ -45,14 +45,14 @@ class SocialShareHelper extends Helper
         'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u={url}&amp;t={text}',
         'twitter' => 'http://twitter.com/home?status={text}+{url}',
         'whatsapp' => 'whatsapp://send?text={text}%20{url}'
-    );
+    ];
 
     /**
      * An array mapping services to their Font Awesome icons.
      *
      * @var array
      */
-    protected $_fa = array(
+    protected $_fa = [
         'delicious' => 'fa-delicious',
         'digg' => 'fa-digg',
         'email' => 'fa-envelope',
@@ -66,7 +66,7 @@ class SocialShareHelper extends Helper
         'tumblr' => 'fa-tumblr',
         'twitter' => 'fa-twitter',
         'whatsapp' => 'fa-whatsapp'
-    );
+    ];
 
     /**
      * Returns the list of available services
@@ -93,7 +93,7 @@ class SocialShareHelper extends Helper
      * @param array $options Array of options.
      * @return string|null URL.
      */
-    public function href($service, $url = null, array $options = array())
+    public function href($service, $url = null, array $options = [])
     {
         // Get the URL, get the current full path if a URL hasn't been specified.
         $url = Router::url($url, true);
@@ -103,16 +103,16 @@ class SocialShareHelper extends Helper
 
         if (!empty($this->_urls[$service])) {
             return preg_replace(
-                array(
+                [
                     '/{url}/',
                     '/{text}/',
                     '/{image}/'
-                ),
-                array(
+                ],
+                [
                     urlencode($url),
                     urlencode($text),
                     urlencode($image)
-                ),
+                ],
                 $this->_urls[$service]
             );
         }
@@ -127,14 +127,14 @@ class SocialShareHelper extends Helper
      * @param array $attributes Array of options and HTML attributes.
      * @return string An `<a />` element.
      */
-    public function link($service, $text, $url = null, array $attributes = array())
+    public function link($service, $text, $url = null, array $attributes = [])
     {
-        $defaults = array(
+        $defaults = [
             'target' => $this->_config['target']
-        );
+        ];
         $attributes += $defaults;
 
-        $options = array();
+        $options = [];
 
         if (!empty($attributes['text'])) {
             $options['text'] = $attributes['text'];
@@ -162,11 +162,11 @@ class SocialShareHelper extends Helper
      * @param array $options Array of options.
      * @return string URL.
      */
-    public function fa($service, $url = null, array $options = array())
+    public function fa($service, $url = null, array $options = [])
     {
-        $defaults = array(
+        $defaults = [
             'target' => $this->_config['target']
-        );
+        ];
         $options += $defaults;
 
         $options['escape'] = false;
@@ -196,7 +196,7 @@ class SocialShareHelper extends Helper
      * @param array $options
      * @return string
      */
-    public function icon($service, array $options = array()) {
+    public function icon($service, array $options = []) {
         $class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->_config['default_fa']);
         if (!empty($options['icon_class'])) {
             $class = $options['icon_class'];

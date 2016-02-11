@@ -35,7 +35,7 @@ class SocialShareHelperTest extends TestCase
      */
     public function testHref()
     {
-        $urls = array(
+        $urls = [
             'delicious' => 'http://delicious.com/post?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
             'digg' => 'http://digg.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
             'email' => 'mailto:?subject=Foo+bar&body=http%3A%2F%2Fexample.com',
@@ -55,12 +55,12 @@ class SocialShareHelperTest extends TestCase
             'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Fexample.com&amp;t=Foo+bar',
             'twitter' => 'http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com',
             'whatsapp' => 'whatsapp://send?text=Foo+bar%20http%3A%2F%2Fexample.com'
-        );
+        ];
 
-        $options = array(
+        $options = [
             'text' => 'Foo bar',
             'image' => 'http://example.com/test.jpg'
-        );
+        ];
 
         foreach ($urls as $service => $expected) {
             $this->assertEquals(
@@ -107,7 +107,7 @@ class SocialShareHelperTest extends TestCase
                 'twitter',
                 'Share',
                 'http://example.com',
-                array('text' => 'Foo bar')
+                ['text' => 'Foo bar']
             )
         );
 
@@ -119,9 +119,7 @@ class SocialShareHelperTest extends TestCase
                 'facebook',
                 'Share',
                 'http://example.com',
-                array(
-                    'target' => null
-                )
+                ['target' => null]
             )
         );
     }
@@ -148,9 +146,7 @@ class SocialShareHelperTest extends TestCase
             $this->SocialShare->fa(
                 'facebook',
                 'http://example.com',
-                array(
-                    'icon_class' => 'fa fa-facebook-square'
-                )
+                ['icon_class' => 'fa fa-facebook-square']
             )
         );
 
@@ -161,9 +157,7 @@ class SocialShareHelperTest extends TestCase
             $this->SocialShare->fa(
                 'whatsapp',
                 'http://example.com',
-                array(
-                    'text' => 'Demo Text test'
-                )
+                ['text' => 'Demo Text test']
             )
         );
     }
