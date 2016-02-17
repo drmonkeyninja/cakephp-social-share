@@ -61,6 +61,7 @@ class SocialShareHelper extends Helper
         'gplus' => 'fa-google-plus',
         'linkedin' => 'fa-linkedin',
         'pinterest' => 'fa-pinterest',
+        'pocket' => 'fa-get-pocket',
         'reddit' => 'fa-reddit',
         'stumbleupon' => 'fa-stumbleupon',
         'tumblr' => 'fa-tumblr',
