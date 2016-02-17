@@ -14,11 +14,13 @@ Social Share currently supports Delicious, Digg, Evernote, Facebook, Friend Feed
 Install using composer: `composer require drmonkeyninja/cakephp-social-share:3.0.*`
 
 Then add the following line to your bootstrap.php to load the plugin.
+
 ```php
 Plugin::load('SocialShare');
 ```
 
-Also don't forget to add the helper in your controller:
+Also don't forget to add the helper in your controller:-
+
 ```php
 public $helpers = ['SocialShare.SocialShare'];
 ```
@@ -26,11 +28,13 @@ public $helpers = ['SocialShare.SocialShare'];
 ## Usage
 
 ### SocialShareHelper::link()
+
 ```
 SocialShareHelper::link(string $service, string $title, mixed $url = null, array $options = [])
 ```
 
-Returns an HTML link to share the current page for the supplied service. For example to create a link for Facebook:
+Returns an HTML link to share the current page for the supplied service. For example to create a link for Facebook:-
+
 ```php
 echo $this->SocialShare->link(
     'facebook',
@@ -38,7 +42,8 @@ echo $this->SocialShare->link(
 );
 ```
 
-You can easily produce a list of links to share to different social networks:
+You can easily produce a list of links to share to different social networks:-
+
 ```php
 $services = [
     'facebook' => __('Share on Facebook'),
@@ -57,7 +62,7 @@ foreach ($services as $service => $linkText) {
 echo '</ul>';
 ```
 
-Supported services:
+Supported services:-
 
 * delicious
 * digg
@@ -85,6 +90,7 @@ You can pass a URL or a routing array as the third parameter for the URL you wan
 For Pinterest there is an additional 'image' option for a URL to an image to share.
 
 ### SocialShareHelper::href()
+
 ```
 SocialShareHelper::href(string $service, mixed $url = null, array $options = [])
 ```
@@ -92,21 +98,36 @@ SocialShareHelper::href(string $service, mixed $url = null, array $options = [])
 Returns an URL for sharing to the supplied service.
 
 ### SocialShareHelper::fa()
+
 ```
 SocialShareHelper::fa(string $service, mixed $url = null, array $options = [])
 ```
 
 Returns an HTML link just like `SocialShare::link()` except the link text will be a relevant Font Awesome icon for the service.
-For example:
+
+For example:-
+
 ```php
 echo $this->SocialShare->fa(
     'facebook'
     'http://example.com'
 );
 ```
-Will output:
+
+Will output:-
+
 ```html
 <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com">
     <i class="fa fa-facebook"></i>
 </a>
+```
+
+If you need to change the icon markup output by `fa()` you can override the icon class using `icon_class`:-
+
+```php
+echo $this->SocialShare->fa(
+    'facebook'
+    null,
+    ['icon_class' => 'fa fa-facebook-square']
+);
 ```
