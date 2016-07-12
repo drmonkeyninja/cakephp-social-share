@@ -142,6 +142,11 @@ class SocialShareHelper extends Helper
             unset($attributes['text']);
         }
 
+        if (!empty($attributes['image'])) {
+            $options['image'] = $attributes['image'];
+            unset($attributes['image']);
+        }
+
         return $this->Html->link(
             $text,
             $this->href($service, $url, $options),
