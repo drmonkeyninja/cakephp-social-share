@@ -109,7 +109,7 @@ For example:-
 
 ```php
 echo $this->SocialShare->fa(
-    'facebook'
+    'facebook',
     'http://example.com'
 );
 ```
