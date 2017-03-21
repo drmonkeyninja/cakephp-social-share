@@ -126,7 +126,7 @@ If you need to change the icon markup output by `fa()` you can override the icon
 
 ```php
 echo $this->SocialShare->fa(
-    'facebook'
+    'facebook',
     null,
     ['icon_class' => 'fa fa-facebook-square']
 );
