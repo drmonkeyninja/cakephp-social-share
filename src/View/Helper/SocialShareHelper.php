@@ -202,7 +202,7 @@ class SocialShareHelper extends Helper
      * @param array $options Icon options
      * @return string
      */
-    public function icon($service, array $options = []) 
+    public function icon($service, array $options = [])
     {
         $class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->_config['default_fa']);
         if (!empty($options['icon_class'])) {
