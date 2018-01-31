@@ -198,11 +198,12 @@ class SocialShareHelper extends Helper
      *
      * - `icon_class` Class name of icon for overriding defaults.
      *
-     * @param string $service
-     * @param array $options
+     * @param string $service Social Media service to create share link for.
+     * @param array $options Icon options
      * @return string
      */
-    public function icon($service, array $options = []) {
+    public function icon($service, array $options = []) 
+    {
         $class = 'fa ' . (!empty($this->_fa[$service]) ? $this->_fa[$service] : $this->_config['default_fa']);
         if (!empty($options['icon_class'])) {
             $class = $options['icon_class'];
@@ -210,5 +211,4 @@ class SocialShareHelper extends Helper
 
         return '<i class="' . $class . '"></i>';
     }
-
 }
