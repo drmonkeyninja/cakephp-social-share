@@ -156,8 +156,8 @@ class SocialShareHelper extends Helper
      *
      * - `icon_class` Class name of icon for overriding defaults.
      *
-     * @param string $service
-     * @param array $options
+     * @param string $service Social Media service to create icon for
+     * @param array $options Icon options
      * @return string
      */
     public function icon($service, array $options = [])
