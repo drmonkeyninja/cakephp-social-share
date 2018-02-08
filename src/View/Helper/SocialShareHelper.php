@@ -4,6 +4,7 @@ namespace SocialShare\View\Helper;
 
 use Cake\Routing\Router;
 use Cake\View\Helper;
+use drmonkeyninja\SocialShareUrl\SocialShareUrl;
 
 class SocialShareHelper extends Helper
 {
@@ -18,33 +19,6 @@ class SocialShareHelper extends Helper
     protected $_defaultConfig = [
         'target' => '_blank',
         'default_fa' => 'fa-share-alt'
-    ];
-
-    /**
-     * An array of services and their corresponding share/bookmarking URLs.
-     *
-     * @var array
-     */
-    protected $_urls = [
-        'delicious' => 'http://delicious.com/post?url={url}&amp;title={text}',
-        'digg' => 'http://digg.com/submit?url={url}&amp;title={text}',
-        'email' => 'mailto:?subject={text}&body={url}',
-        'evernote' => 'http://www.evernote.com/clip.action?url={url}&amp;title={text}',
-        'facebook' => 'https://www.facebook.com/sharer/sharer.php?u={url}',
-        'friendfeed' => 'http://www.friendfeed.com/share?url={url}&amp;title={text}',
-        'google' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk={url}&amp;title={text}',
-        'gplus' => 'https://plus.google.com/share?url={url}',
-        'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url={url}&amp;title={text}',
-        'newsvine' => 'http://www.newsvine.com/_tools/seed&save?u={url}&amp;h={text}',
-        'pinterest' => 'http://www.pinterest.com/pin/create/button/?url={url}&amp;media={image}&amp;description={text}',
-        'pocket' => 'https://getpocket.com/save?url={url}&amp;title={text}',
-        'reddit' => 'http://www.reddit.com/submit?url={url}&amp;title={text}',
-        'slashdot' => 'http://slashdot.org/bookmark.pl?url={url}&amp;title={text}',
-        'stumbleupon' => 'http://www.stumbleupon.com/submit?url={url}&amp;title={text}',
-        'technorati' => 'http://technorati.com/faves?add={url}&amp;title={text}',
-        'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u={url}&amp;t={text}',
-        'twitter' => 'http://twitter.com/home?status={text}+{url}',
-        'whatsapp' => 'whatsapp://send?text={text}%20{url}'
     ];
 
     /**
@@ -76,7 +50,7 @@ class SocialShareHelper extends Helper
      */
     public function services()
     {
-        return array_keys($this->_urls);
+        return (new SocialShareUrl())->getServices();
     }
 
     /**
@@ -98,25 +72,9 @@ class SocialShareHelper extends Helper
     {
         // Get the URL, get the current full path if a URL hasn't been specified.
         $url = Router::url($url, true);
+        $SocialShareUrl = new SocialShareUrl();
 
-        $text = !empty($options['text']) ? $options['text'] : '';
-        $image = !empty($options['image']) ? $options['image'] : '';
-
-        if (!empty($this->_urls[$service])) {
-            return preg_replace(
-                [
-                    '/{url}/',
-                    '/{text}/',
-                    '/{image}/'
-                ],
-                [
-                    urlencode($url),
-                    urlencode($text),
-                    urlencode($image)
-                ],
-                $this->_urls[$service]
-            );
-        }
+        return $SocialShareUrl->getUrl($service, $url, $options);
     }
 
     /**
@@ -198,7 +156,7 @@ class SocialShareHelper extends Helper
      *
      * - `icon_class` Class name of icon for overriding defaults.
      *
-     * @param string $service Social Media service to create share link for.
+     * @param string $service Social Media service to create icon for
      * @param array $options Icon options
      * @return string
      */

@@ -13,73 +13,32 @@ class SocialShareHelperTest extends TestCase
     /**
      * @return void
      */
-    public function setUp()
-    {
-        parent::setUp();
-
-        $View = new View(new Request());
-        $this->SocialShare = new SocialShareHelper($View);
-    }
-
-    /**
-     * @return void
-     */
     public function testServices()
     {
-        $result = $this->SocialShare->services();
+        $SocialShare = new SocialShareHelper(new View);
+        $result = $SocialShare->services();
         $this->assertNotEmpty($result);
     }
 
     /**
      * @return void
      */
-    public function testHref()
+    public function testIcon()
     {
-        $urls = [
-            'delicious' => 'http://delicious.com/post?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'digg' => 'http://digg.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'email' => 'mailto:?subject=Foo+bar&body=http%3A%2F%2Fexample.com',
-            'evernote' => 'http://www.evernote.com/clip.action?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com',
-            'friendfeed' => 'http://www.friendfeed.com/share?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'google' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'gplus' => 'https://plus.google.com/share?url=http%3A%2F%2Fexample.com',
-            'linkedin' => 'http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'newsvine' => 'http://www.newsvine.com/_tools/seed&save?u=http%3A%2F%2Fexample.com&amp;h=Foo+bar',
-            'pinterest' => 'http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fexample.com&amp;media=http%3A%2F%2Fexample.com%2Ftest.jpg&amp;description=Foo+bar',
-            'pocket' => 'https://getpocket.com/save?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'reddit' => 'http://www.reddit.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'slashdot' => 'http://slashdot.org/bookmark.pl?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'stumbleupon' => 'http://www.stumbleupon.com/submit?url=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'technorati' => 'http://technorati.com/faves?add=http%3A%2F%2Fexample.com&amp;title=Foo+bar',
-            'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Fexample.com&amp;t=Foo+bar',
-            'twitter' => 'http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com',
-            'whatsapp' => 'whatsapp://send?text=Foo+bar%20http%3A%2F%2Fexample.com'
-        ];
-
-        $options = [
-            'text' => 'Foo bar',
-            'image' => 'http://example.com/test.jpg'
-        ];
-
-        foreach ($urls as $service => $expected) {
-            $this->assertEquals(
-                $expected,
-                $this->SocialShare->href($service, 'http://example.com', $options)
-            );
-        }
+        $SocialShare = new SocialShareHelper(new View);
+        $icon = $SocialShare->icon('facebook');
+        $expected = '<i class="fa fa-facebook"></i>';
+        $this->assertSame($expected, $icon);
     }
 
     /**
      * @return void
      */
-    public function testIcon() {
-        $icon = $this->SocialShare->icon('facebook');
-        $expected = '<i class="fa fa-facebook"></i>';
-        $this->assertSame($expected, $icon);
-
+    public function testIconClassCanBeOverridden()
+    {
+        $SocialShare = new SocialShareHelper(new View);
         $expected = '<i class="fa fa-whatsapp-square"></i>';
-        $icon = $this->SocialShare->icon('whatsapp', ['icon_class' => 'fa fa-whatsapp-square']);
+        $icon = $SocialShare->icon('whatsapp', ['icon_class' => 'fa fa-whatsapp-square']);
         $this->assertSame($expected, $icon);
     }
 
@@ -88,38 +47,21 @@ class SocialShareHelperTest extends TestCase
      */
     public function testLinks()
     {
-        // Facebook test
+        $SocialShare = $this->getMockBuilder(SocialShareHelper::class)
+            ->setMethods(['href'])
+            ->setConstructorArgs([new View()])
+            ->getMock();
+        $SocialShare->expects($this->once())
+            ->method('href')
+            ->willReturn('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com');
+
         $expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank">Share</a>';
         $this->assertEquals(
             $expected,
-            $this->SocialShare->link(
+            $SocialShare->link(
                 'facebook',
                 'Share',
                 'http://example.com'
-            )
-        );
-
-        // Twitter test
-        $expected = '<a href="http://twitter.com/home?status=Foo+bar+http%3A%2F%2Fexample.com" target="_blank">Share</a>';
-        $this->assertEquals(
-            $expected,
-            $this->SocialShare->link(
-                'twitter',
-                'Share',
-                'http://example.com',
-                ['text' => 'Foo bar']
-            )
-        );
-
-        // Facebook test
-        $expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com">Share</a>';
-        $this->assertEquals(
-            $expected,
-            $this->SocialShare->link(
-                'facebook',
-                'Share',
-                'http://example.com',
-                ['target' => null]
             )
         );
     }
@@ -129,35 +71,20 @@ class SocialShareHelperTest extends TestCase
      */
     public function testFa()
     {
-        // Font Awesome test
+        $SocialShare = $this->getMockBuilder(SocialShareHelper::class)
+            ->setMethods(['href'])
+            ->setConstructorArgs([new View()])
+            ->getMock();
+        $SocialShare->expects($this->once())
+            ->method('href')
+            ->willReturn('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com');
+
         $expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank"><i class="fa fa-facebook"></i></a>';
         $this->assertEquals(
             $expected,
-            $this->SocialShare->fa(
+            $SocialShare->fa(
                 'facebook',
                 'http://example.com'
-            )
-        );
-
-        // Font Awesome icon class test
-        $expected = '<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com" target="_blank"><i class="fa fa-facebook-square"></i></a>';
-        $this->assertEquals(
-            $expected,
-            $this->SocialShare->fa(
-                'facebook',
-                'http://example.com',
-                ['icon_class' => 'fa fa-facebook-square']
-            )
-        );
-
-        // Custom Text test
-        $expected = '<a href="whatsapp://send?text=Demo+Text+test%20http%3A%2F%2Fexample.com" target="_blank"><i class="fa fa-whatsapp"></i></a>';
-        $this->assertEquals(
-            $expected,
-            $this->SocialShare->fa(
-                'whatsapp',
-                'http://example.com',
-                ['text' => 'Demo Text test']
             )
         );
     }

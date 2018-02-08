@@ -16,7 +16,8 @@
         }
     ],
     "require": {
-        "cakephp/cakephp": "~3.0"
+        "cakephp/cakephp": "~3.0",
+        "drmonkeyninja/social-share-url": "^1.0"
     },
     "autoload": {
         "psr-4": {

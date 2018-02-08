@@ -19,10 +19,10 @@ Then add the following line to your bootstrap.php to load the plugin.
 Plugin::load('SocialShare');
 ```
 
-Also don't forget to add the helper in your controller:-
+Also don't forget to add the helper in your `AppView`:-
 
 ```php
-public $helpers = ['SocialShare.SocialShare'];
+$this->loadHelper('SocialShare.SocialShare');
 ```
 
 ## Usage
