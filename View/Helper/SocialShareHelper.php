@@ -39,7 +39,7 @@ class SocialShareHelper extends AppHelper {
 		'stumbleupon' => 'http://www.stumbleupon.com/submit?url={url}&amp;title={text}',
 		'technorati' => 'http://technorati.com/faves?add={url}&amp;title={text}',
 		'tumblr' => 'http://www.tumblr.com/share?v=3&amp;u={url}&amp;t={text}',
-		'twitter' => 'http://twitter.com/home?status={text}+{url}',
+		'twitter' => 'https://twitter.com/intent/tweet?text={text}&url={url}',
 		'whatsapp' => 'whatsapp://send?text={text}%20{url}'
 	);
 
