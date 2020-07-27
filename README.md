@@ -7,16 +7,16 @@ The aim of the plugin is to keep things simple. It doesn't come packaged with an
 
 Social Share currently supports Delicious, Digg, Evernote, Facebook, Friend Feed, Google Bookmarks, Google+, LinkedIn, Newsvine, Pinterest, Pocket, Reddit Slashdot, simple email, StumbleUpon, Technorati, Tumblr, Twitter and WhatsApp.
 
-**Note**: This branch is for CakePHP 3.x.
+**Note**: This branch is for CakePHP 4.x.
 
 ## Installation
 
-Install using composer: `composer require drmonkeyninja/cakephp-social-share:3.0.*`
+Install using composer: `composer require drmonkeyninja/cakephp-social-share:4.*`
 
-Then add the following line to your bootstrap.php to load the plugin.
+Then add the following line to your Application.php file to load the plugin.
 
 ```php
-Plugin::load('SocialShare');
+$this->addPlugin(\SocialShare\Plugin::class);
 ```
 
 Also don't forget to add the helper in your `AppView`:-
